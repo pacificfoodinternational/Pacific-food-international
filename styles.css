@@ -294,6 +294,82 @@ button, input, textarea {
   color: #fff;
 }
 
+.analytics-consent {
+  position: fixed;
+  z-index: 45;
+  left: 1rem;
+  right: 1rem;
+  bottom: 1rem;
+  width: min(860px, calc(100% - 2rem));
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--card);
+  box-shadow: var(--shadow);
+}
+
+.analytics-consent[hidden] {
+  display: none;
+}
+
+.analytics-consent__copy {
+  flex: 1;
+}
+
+.analytics-consent__copy strong {
+  display: block;
+  margin-bottom: 0.2rem;
+}
+
+.analytics-consent__copy p {
+  margin: 0;
+  color: var(--text-soft);
+  font-size: 0.9rem;
+}
+
+.analytics-consent__copy a {
+  color: var(--primary-deep);
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+.analytics-consent__actions {
+  display: flex;
+  flex-shrink: 0;
+  gap: 0.6rem;
+}
+
+.analytics-consent__actions button {
+  min-height: 44px;
+  padding: 0.6rem 0.9rem;
+  border: 1px solid var(--primary-deep);
+  border-radius: 8px;
+  background: transparent;
+  color: var(--primary-deep);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.analytics-consent__actions button[data-analytics-choice="accepted"] {
+  background: var(--primary-deep);
+  color: #fff;
+}
+
+.cookie-settings-button {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--primary-deep);
+  font: inherit;
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+  cursor: pointer;
+}
+
 .featured-strip {
   margin-top: 2.5rem;
   display: flex;
@@ -1088,6 +1164,18 @@ textarea:focus {
 }
 
 @media (max-width: 760px) {
+  .analytics-consent {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+    padding: 1rem;
+  }
+
+  .analytics-consent__actions {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .selector-row,
   .admin-grid,
   .product-list-row,

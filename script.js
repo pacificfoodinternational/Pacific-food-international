@@ -519,3 +519,7 @@ if (document.getElementById('productSelect')) {
     inquiryForm.addEventListener('submit', submitWholesaleInquiry);
   }
 }
+
+import('./firebase-init.js').catch((error) => {
+  console.warn('Firebase Analytics initialization could not be loaded.', error);
+});

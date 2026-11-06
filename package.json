@@ -1,0 +1,8 @@
+{
+  "name": "pacific-food-international-site",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "firebase": "^13.2.0"
+  }
+}

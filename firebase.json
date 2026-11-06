@@ -1,0 +1,12 @@
+{
+  "hosting": {
+    "site": "pacificfoodinternational-1fa57-9aaf6",
+    "public": ".",
+    "ignore": [
+      "firebase.json",
+      ".firebaserc",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}
