@@ -1,0 +1,235 @@
+﻿<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Wholesale price calculator and order summary for PACIFIC FOOD INTERNATIONAL LTD." />
+    <title>Wholesale Calculator | PACIFIC FOOD INTERNATIONAL LTD</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container nav-wrap">
+        <a href="index.html" class="brand" aria-label="PACIFIC FOOD INTERNATIONAL LTD home">
+          <div class="brand-mark">PF</div>
+          <div class="brand-copy">
+            <span>PACIFIC FOOD</span>
+            <small>INTERNATIONAL LTD</small>
+          </div>
+        </a>
+        <button class="nav-toggle" aria-label="Open navigation" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+        <nav class="site-nav" aria-label="Main navigation">
+          <button class="nav-close" aria-label="Close navigation">âœ•</button>
+          <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="services.html">Services</a>
+            <a href="products.html">Products</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="about.html">About</a>
+            <a href="company-details.html">Company Details</a>
+            <a href="contact.html">Contact</a>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="page-hero">
+        <div class="container page-hero-inner">
+          <div class="page-hero-copy">
+            <div class="breadcrumbs"><a href="index.html">Home</a> / Wholesale Calculator</div>
+            <span class="section-tag">Wholesale calculator</span>
+            <h1>Build your fresh produce order.</h1>
+            <p>
+              Select fruits and vegetables, add quantities in kilograms and review an estimated wholesale order summary.
+              Final wholesale pricing may depend on quantity, availability and delivery charges.
+            </p>
+          </div>
+          <div class="page-hero-visual">
+            <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=1200&q=80" alt="Wholesale produce calculator" />
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container calculator-shell">
+          <div class="calculator-layout">
+            <div class="quote-panel">
+              <div class="section-header compact">
+                <div>
+                  <span class="section-tag">Order builder</span>
+                  <h2 class="section-title">Wholesale price calculator</h2>
+                </div>
+              </div>
+
+              <div class="selector-row">
+                <div class="input-group">
+                  <label for="productSelect">Select produce</label>
+                  <select id="productSelect"></select>
+                </div>
+                <div class="input-group">
+                  <label for="productQty">Quantity (kg)</label>
+                  <input id="productQty" type="number" min="0.5" step="0.5" value="10" />
+                </div>
+                <button id="addProductBtn" class="btn btn-primary" type="button">Add to order</button>
+              </div>
+
+              <div class="muted-note">
+                Approved wholesale prices are controlled by the administrator. Final wholesale pricing may depend on quantity,
+                availability and delivery charges.
+              </div>
+
+              <div id="productList" class="product-list"></div>
+            </div>
+
+            <aside class="summary-box">
+              <span class="section-tag">Order summary</span>
+              <h3>Estimated wholesale order</h3>
+
+              <div class="summary-table">
+                <div class="summary-row heading">
+                  <span>Product</span>
+                  <span>Qty</span>
+                  <span>Rate</span>
+                  <span>Subtotal</span>
+                </div>
+                <div id="orderRows"></div>
+              </div>
+
+              <div class="totals-box">
+                <div class="total-row">
+                  <span>Total quantity</span>
+                  <strong id="totalQuantity">0 kg</strong>
+                </div>
+                <div class="total-row">
+                  <span>Estimated total</span>
+                  <strong id="grandTotal">Â£0.00</strong>
+                </div>
+              </div>
+
+              <div class="delivery-note">
+                Delivery charges may apply based on destination, timing and order size.
+              </div>
+            </aside>
+          </div>
+
+          <div class="admin-panel">
+            <div class="admin-header">
+              <h3>Administrator price control</h3>
+              <span>Approved rates only</span>
+            </div>
+            <div id="adminPriceGrid" class="admin-grid"></div>
+          </div>
+
+          <div class="inquiry-panel">
+            <div class="section-header compact">
+              <div>
+                <span class="section-tag">Customer details</span>
+                <h2 class="section-title">Submit wholesale inquiry</h2>
+              </div>
+            </div>
+
+            <form id="wholesaleInquiryForm" novalidate>
+              <div class="form-grid">
+                <div class="input-group">
+                  <label for="customerName">Full name</label>
+                  <input id="customerName" name="customerName" type="text" placeholder="Your name" />
+                  <span class="error-text" data-error="customerName"></span>
+                </div>
+                <div class="input-group">
+                  <label for="companyName">Company name</label>
+                  <input id="companyName" name="companyName" type="text" placeholder="Company name" />
+                  <span class="error-text" data-error="companyName"></span>
+                </div>
+                <div class="input-group">
+                  <label for="customerPhone">Phone number</label>
+                  <input id="customerPhone" name="customerPhone" type="tel" placeholder="Phone number" />
+                  <span class="error-text" data-error="customerPhone"></span>
+                </div>
+                <div class="input-group">
+                  <label for="customerEmail">Email</label>
+                  <input id="customerEmail" name="customerEmail" type="email" placeholder="Email address" />
+                  <span class="error-text" data-error="customerEmail"></span>
+                </div>
+                <div class="input-group full">
+                  <label for="deliveryAddress">Delivery address</label>
+                  <textarea id="deliveryAddress" name="deliveryAddress" placeholder="Delivery address"></textarea>
+                  <span class="error-text" data-error="deliveryAddress"></span>
+                </div>
+              </div>
+
+              <div class="inquiry-actions">
+                <button type="submit" class="btn btn-primary">Request Wholesale Quote</button>
+                <button type="button" id="clearOrderBtn" class="btn btn-secondary">Clear order</button>
+              </div>
+              <div id="submissionMessage" class="success-message" aria-live="polite"></div>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <div class="brand" style="margin-bottom: 1rem;">
+              <div class="brand-mark">PF</div>
+              <div class="brand-copy">
+                <span>PACIFIC FOOD</span>
+                <small>INTERNATIONAL LTD</small>
+              </div>
+            </div>
+            <p>Wholesale supplier of fresh fruits and vegetables focused on quality, freshness and dependable service.</p>
+          </div>
+
+          <div class="footer-column">
+            <h4>Quick links</h4>
+            <ul class="footer-links">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="about.html">About</a></li>
+              <li><a href="services.html">Services</a></li>
+              <li><a href="products.html">Products</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h4>Services</h4>
+            <ul class="footer-links">
+              <li><a href="fresh-fruits.html">Fresh Fruits</a></li>
+              <li><a href="fresh-vegetables.html">Fresh Vegetables</a></li>
+              <li><a href="wholesale-supply.html">Wholesale Supply</a></li>
+              <li><a href="quality-freshness.html">Quality & Freshness</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h4>Company</h4>
+            <ul class="footer-links">
+              <li>Phone: 07349242985</li>
+              <li>Email: pacificfoodinternational@gmail.com</li>
+              <li>157 Buistroed Avenue TW3 3AF</li>
+              <li>Company Registration Number: 17504428</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <span>Â© <span data-year></span> PACIFIC FOOD INTERNATIONAL LTD. All rights reserved.</span>
+          <div>
+            <a href="privacy-policy.html">Privacy Policy</a> Â·
+            <a href="terms-conditions.html">Terms & Conditions</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
+
